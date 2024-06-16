@@ -93,7 +93,7 @@ def make_injection_plot(ifo, time, inj_strain, wave_strain, noise, f_min, outdir
     dt                   = np.median(np.diff(time))
     seglen               = time[-1]-time[0]
     freq_proj, hfft_proj = fft(wave_strain, dt)
-    freq_inj, hfft_inj   = fft(inj_strain*tukey(len(inj_strain),alpha=self.tukey), dt)
+    freq_inj, hfft_inj   = fft(inj_strain*tukey(len(inj_strain),alpha=0.4/self.seglen), dt)
 
     try:
         fig = plt.figure(figsize=(12,9))
